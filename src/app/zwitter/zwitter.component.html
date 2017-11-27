@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default navbar-dark bg-primary">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Zwitter</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+
+  <h4>Create a new Zweet</h4>
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <div class="input-group">
+        <input type="text" class="form-control" #input>
+        <span class="input-group-btn">
+          <button class="btn btn-primary" (click)="add(input)">Zweet!</button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <h4>Zweets</h4>
+  <div class="row">
+    <div class="col-md-4 zweet-card border m-2 p-3" *ngFor="let item of (items | async)">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <strong>{{ item.user }}:</strong> <br />
+          {{ item.text }}<br />
+          <small>posted at {{ item.createdAt }}</small>
+          <div class="btn btn-danger btn-sm btn-remove" (click)="delete(item.id)">
+            <i class="fa fa-times"></i>
+          </div>
+          <div class="btn btn-info btn-sm pull-right btn-like" (click)="like(item.id, item.likes)">
+            <div class="badge badge-like-count">{{ item.likes }}</div>
+            <i class="fa fa-thumbs-up"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

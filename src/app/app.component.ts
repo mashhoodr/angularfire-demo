@@ -7,10 +7,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
-  items;
 
   constructor() {
-    this.items = [1, 2, 3, 4, 5];
   }
 }
